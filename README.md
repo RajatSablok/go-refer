@@ -5,7 +5,7 @@
 
 ---
 
-[![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=postman)](https://documenter.getpostman.com/view/12931122/TW6uoobu) [![URL](https://img.shields.io/badge/Try%Now%20to%20UI-orange?style=flat-square&logo=react)](https://go-refer.herokuapp.com/)
+[![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=postman)](https://documenter.getpostman.com/view/12931122/TW6uoobu) [![URL](https://img.shields.io/badge/Live%20URL-Try%20Now-blue?style=flat-square&logo=react)](https://go-refer.herokuapp.com/)
 
 ## Features
 
