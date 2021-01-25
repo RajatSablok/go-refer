@@ -58,6 +58,16 @@ app.use((req, res, next) => {
 
 app.use(cors());
 
+app.get("/", async (req, res) => {
+  res.status(200).json({
+    message:
+      "Please visit the link given below (API Docs) for available routes",
+    "API Docs": "https://documenter.getpostman.com/view/12931122/TW6uoobu",
+
+    "GitHub repository": "https://github.com/RajatSablok/go-refer",
+  });
+});
+
 app.use("/user", require("./api/routes/user.routes"));
 app.use("/post", require("./api/routes/post.routes"));
 
