@@ -135,6 +135,7 @@ const profile = async (req, res) => {
   const userId = req.user.userId;
 
   await User.findById(userId)
+    .populate("posts.postId", "-__v -user")
     .select("-password -__v")
     .then((user) => {
       res.status(200).json({

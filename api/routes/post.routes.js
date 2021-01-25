@@ -17,6 +17,9 @@ router.get("/", postControllers.getPostByID);
 //Search posts
 router.get("/search", postControllers.searchPosts);
 
+//Get all posts of a user
+router.get("/allPostsOfAUser", postControllers.getAllPostsOfAUser);
+
 //Delete an post
 router.delete("/", checkAuth, postControllers.deletePost);
 

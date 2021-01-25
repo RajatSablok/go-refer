@@ -75,7 +75,7 @@ const getPostByID = async (req, res) => {
 
   if (!postId) {
     return res.status(400).json({
-      message: "1 or more parameter(s) missing from req.body",
+      message: "1 or more parameter(s) missing from req.query",
     });
   }
 
@@ -100,6 +100,8 @@ const searchPosts = async (req, res) => {
 
   await Post.find({
     $or: [
+      { postType: new RegExp(".*" + query + ".*", "i") },
+      { taskCategory: new RegExp(".*" + query + ".*", "i") },
       { taskType: new RegExp(".*" + query + ".*", "i") },
       { location: new RegExp(".*" + query + ".*", "i") },
     ],
@@ -115,6 +117,31 @@ const searchPosts = async (req, res) => {
     .catch((err) => {
       res.status(500).json({
         message: "Something went wrong",
+        error: err.toString(),
+      });
+    });
+};
+
+const getAllPostsOfAUser = async (req, res) => {
+  const { userId } = req.query;
+
+  if (!userId) {
+    return res.status(400).json({
+      message: "1 or more parameter(s) missing from req.query",
+    });
+  }
+
+  await Post.find({ user: userId })
+    .populate("user", "name")
+    .select("-__v")
+    .then(async (post) => {
+      res.status(200).json({
+        post,
+      });
+    })
+    .catch((err) => {
+      res.status(404).json({
+        message: "Invalid user ID",
         error: err.toString(),
       });
     });
@@ -170,5 +197,6 @@ module.exports = {
   getAllPosts,
   getPostByID,
   searchPosts,
+  getAllPostsOfAUser,
   deletePost,
 };
